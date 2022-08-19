@@ -1,0 +1,7 @@
+
+æ
+java:S1130I"ÈRemove the declaration of thrown exception 'org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPAModelException' which is a subclass of 'org.apache.olingo.odata2.api.exception.ODataException'.(È¼²„8ºÇê¤«0
+è
+java:S1130I"ÊRemove the declaration of thrown exception 'org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException' which is a subclass of 'org.apache.olingo.odata2.api.exception.ODataException'.(È¼²„8ºÇê¤«0
+Ø
+java:S1130I"ºRemove the declaration of thrown exception 'org.apache.olingo.odata2.api.exception.ODataNotFoundException' which is a subclass of 'org.apache.olingo.odata2.api.exception.ODataException'.(È¼²„8ºÇê¤«0

@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="1.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="default" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Father">
+                <Key>
+                    <PropertyRef Name="Id"></PropertyRef>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"></Property>
+                <Property Name="Name" Type="Edm.String"></Property>
+            </EntityType>
+            <EntityType Name="Child">
+                <Key>
+                    <PropertyRef Name="FatherId"></PropertyRef>
+                    <PropertyRef Name="MotherId"></PropertyRef>
+                </Key>
+                <Property Name="FatherId" Type="Edm.Int64" Nullable="false"></Property>
+                <Property Name="MotherId" Type="Edm.Int64" Nullable="false"></Property>
+                <Property Name="Name" Type="Edm.String"></Property>
+                <NavigationProperty Name="FatherDetails" Relationship="default.Child_Father_Many_ZeroToOne0" FromRole="Child" ToRole="Father"></NavigationProperty>
+                <NavigationProperty Name="MotherDetails" Relationship="default.Child_Mother_Many_ZeroToOne0" FromRole="Child" ToRole="Mother"></NavigationProperty>
+            </EntityType>
+            <EntityType Name="Mother">
+                <Key>
+                    <PropertyRef Name="Id"></PropertyRef>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"></Property>
+                <Property Name="Name" Type="Edm.String"></Property>
+            </EntityType>
+            <Association Name="Child_Mother_Many_ZeroToOne0">
+                <End Type="default.Child" Multiplicity="*" Role="Child"></End>
+                <End Type="default.Mother" Multiplicity="0..1" Role="Mother"></End>
+            </Association>
+            <Association Name="Child_Father_Many_ZeroToOne0">
+                <End Type="default.Child" Multiplicity="*" Role="Child"></End>
+                <End Type="default.Father" Multiplicity="0..1" Role="Father"></End>
+            </Association>
+            <EntityContainer Name="defaultContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Fathers" EntityType="default.Father"></EntitySet>
+                <EntitySet Name="Childs" EntityType="default.Child"></EntitySet>
+                <EntitySet Name="Mothers" EntityType="default.Mother"></EntitySet>
+                <AssociationSet Name="Child_Mother_Many_ZeroToOne0Set" Association="default.Child_Mother_Many_ZeroToOne0">
+                    <End EntitySet="Childs" Role="Child"></End>
+                    <End EntitySet="Mothers" Role="Mother"></End>
+                </AssociationSet>
+                <AssociationSet Name="Child_Father_Many_ZeroToOne0Set" Association="default.Child_Father_Many_ZeroToOne0">
+                    <End EntitySet="Childs" Role="Child"></End>
+                    <End EntitySet="Fathers" Role="Father"></End>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
